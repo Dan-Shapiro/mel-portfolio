@@ -1,2 +1,15 @@
 @import "bootstrap";
 @import "font-awesome";
+
+$text: #696368;
+$background: #FAFAFA;
+
+body {
+    background-color: $background;
+    color: $text;
+    font-family: 'Raleway', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    text-align: center;
+}

@@ -1,14 +1,16 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Posts</h1>
+<h1>Gallery</h1>
 
-<div id="posts">
-  <% @posts.each do |post| %>
-    <%= render post %>
-    <p>
-      <%= link_to "Show this post", post %>
-    </p>
+<div class="container" id="posts">
+  <% @posts.in_groups_of(3, false).each do |group| %>
+    <div class="row">
+      <% group.each do |post| %>
+        <div class="col-sm-4">
+          <%= render post %>
+          <%= link_to "Show more", post %>
+        </div>
+      <% end %>
+    </div>
   <% end %>
 </div>
-
-<%= link_to "New post", new_post_path %>
