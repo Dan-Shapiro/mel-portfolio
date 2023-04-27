@@ -5,8 +5,8 @@
 
   <% if user_signed_in? %>
     <div class="admin_control">
-      <%= link_to "Edit this post", edit_post_path(@post) %>
-      <%= link_to "Delete this post", @post, method: :delete %>
+      <%= link_to "Edit", edit_post_path(@post) %>
+      <%= link_to "Delete", @post, data: { turbo_method: :delete, turbo_confirm: "Delete this fr fr?" } %>
     </div>
   <% end %>
 
