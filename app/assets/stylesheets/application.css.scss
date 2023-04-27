@@ -3,13 +3,167 @@
 
 $text: #696368;
 $background: #FAFAFA;
+$white: #FFFFFF;
+$dark: #696368;
+$light: #AFAFAF;
+$highlight: #CC8591;
+$disabled: #B7B7B7;
 
 body {
-    background-color: $background;
-    color: $text;
-    font-family: 'Raleway', sans-serif;
+  background-color: $background;
+  color: $text;
+  font-family: 'Raleway', sans-serif;
+	position: relative;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    text-align: center;
+  text-align: center;
+}
+
+// image gallery
+#posts {
+	padding: 0 2.5%;
+	text-align: center;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	align-items: stretch;
+	gap: 10px 2.5%;
+
+	.gallery_post {
+		border-radius: 5px;
+		border: $highlight 2px solid;
+		width: 30%;
+		padding: 3%;
+
+		img {
+			display: block;
+			margin: 10px auto;
+			object-fit: contain;
+			width: 90%;
+			border-radius: 5px;
+			border: $highlight 1px solid;
+		}
+
+		.gallery_post_title {
+			margin: 0;
+			font: 1.2em;
+			font-weight: bold;
+			a {
+				text-decoration: none;
+				color: $dark;
+				&:hover {
+					color: $highlight;
+				}
+			}
+		}
+
+		.gallery_post_desc {
+			font-size: .9em;
+			text-align: left;
+		}
+
+		.gallery_post_date {
+			font-size: .7em;
+			margin: 0;
+		}
+	}
+}
+
+// post page
+.show_post {
+	padding: 0 2.5%;
+	text-align: center;
+
+	.post_title {
+		color: $highlight;
+		font-weight: bold;
+	}
+
+	.post_date {
+		font-size: .9em;
+	}
+
+	.admin_control {
+		margin: 20px auto;
+
+		a {
+			color: $light;
+			margin: 0 1em;
+			font-weight: bold;
+			font-size: .8em;
+			text-decoration: none;
+			padding: 5px;
+			border-radius: 5px;
+			border: $highlight 2px solid;
+			background: $white;
+			&:hover {
+				color: $highlight;
+				background: $light;
+			}
+		}
+	}
+
+	.post_gallery {
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: center;
+		align-items: stretch;
+		gap: 10px 2.5%;
+
+		img {
+			border-radius: 5px;
+			border: $highlight 2px solid;
+			width: 30%;
+		}
+	}
+}
+
+// pagination
+.pagination:before,
+.pagination:after {
+  content: " ";
+  display: table;
+}
+
+.pagination:after {
+  clear: both;
+}
+
+.pagination {
+  text-align: center;
+  margin: 0 0 3em 0;
+
+  a,
+  .previous_page,
+  .current,
+  .next_page {
+		padding: .75em 1em;
+		margin: 0 .5em;
+		border-radius: .15em;
+		line-height: 20px;
+		text-decoration: none;
+		background: $white;
+		font-weight: bold;
+		font-size: .7em;
+		font-style: normal;
+		color: $dark;
+		&:hover {
+			background: $highlight;
+			color: $white;
+		}
+  }
+
+	.current {
+		background: $highlight;
+		color: $white;
+	}
+
+	.disabled {
+		color: $disabled;
+		&:hover {
+			color: $disabled;
+			background: $white;
+		}
+	}
 }

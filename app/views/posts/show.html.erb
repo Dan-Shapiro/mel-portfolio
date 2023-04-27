@@ -1,10 +1,20 @@
-<p style="color: green"><%= notice %></p>
+<div id="<%= dom_id @post %>" class="show_post">
+  <h1 class="post_title"><%= @post.title %></h1>
+  <p class="post_desc"><%= @post.description %></p>
+  <p class="post_date"><%= @post.created_at.strftime("%A, %B %d") %></p>
 
-<%= render @post %>
+  <% if user_signed_in? %>
+    <div class="admin_control">
+      <%= link_to "Edit this post", edit_post_path(@post) %>
+      <%= link_to "Delete this post", @post, method: :delete %>
+    </div>
+  <% end %>
 
-<div>
-  <%= link_to "Edit this post", edit_post_path(@post) %> |
-  <%= link_to "Back to posts", posts_path %>
-
-  <%= button_to "Destroy this post", @post, method: :delete %>
+  <div class="post_gallery">
+    <% @post.images.each do |image| %>
+      <%= image_tag(image) %>
+    <% end %>
+  </div>
 </div>
+
+

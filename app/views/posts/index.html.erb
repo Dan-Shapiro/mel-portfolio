@@ -2,15 +2,21 @@
 
 <h1>Gallery</h1>
 
-<div class="container" id="posts">
-  <% @posts.in_groups_of(3, false).each do |group| %>
-    <div class="row">
-      <% group.each do |post| %>
-        <div class="col-sm-4">
-          <%= render post %>
-          <%= link_to "Show more", post %>
-        </div>
-      <% end %>
+<div id="posts">
+  <% if @posts.count.zero? %>
+    <p>No posts to show at this time.</p>
+  <% end %>
+
+  <% @posts.each do |post| %>
+    <div class="gallery_post">
+      <div id="<%= dom_id post %>">
+        <%= image_tag(post.images.first) %>
+        <p class="gallery_post_title"><%= link_to post.title, post %></p>
+        <p class="gallery_post_desc"><%= post.description %></p>
+        <p class="gallery_post_date"><%= post.created_at.strftime("%A, %B %d") %></p>
+      </div>
     </div>
   <% end %>
+
+  <%= will_paginate @posts %>
 </div>
