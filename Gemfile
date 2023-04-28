@@ -19,6 +19,7 @@ gem 'jquery-rails'
 gem "font-awesome-sass"
 gem 'devise'
 gem 'will_paginate'
+gem "aws-sdk-s3", require: false
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
